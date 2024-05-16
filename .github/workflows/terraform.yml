@@ -81,15 +81,6 @@ jobs:
         if: steps.apple.outcome == 'success'
         run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/aws/deploy.yaml
 
-# terraform destroy steps
-
-      - name: Terraform destroy
-        id: destroy
-        run: terraform destroy -auto-approve -input=false
-
-      - name: Cleanup
-        if: always()
-        run: rm -rf .terraform
 
     # Add any additional cleanup steps here, such as removing temporary files or directories
 
